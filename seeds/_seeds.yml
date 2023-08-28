@@ -1,0 +1,9 @@
+version: 2
+
+seeds:
+  - name: seed__ngpvan_classic__results
+    config:
+      column_types:
+        resultsid: int
+        resultshortname: varchar(60)
+        resultdescription: varchar(600)
