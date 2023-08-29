@@ -1,0 +1,477 @@
+version: 2
+
+models:
+  - name: stg_ngpvan_classic__activist_codes
+    columns:
+      - name: surrogate_activist_code_id
+        description: Surrogate key compiled using the surrogate prefix and activistcodeid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__committees
+    columns:
+      - name: surrogate_committee_id
+        description: Surrogate key compiled using the surrogate prefix and committeeid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__contact_types
+    columns:
+      - name: surrogate_contact_type_id
+        description: Surrogate key compiled using the surrogate prefix and contacttypeid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__contacts
+    columns:
+      - name: surrogate_van_id
+        description: Surrogate key compiled using the surrogate prefix and vanid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+  
+  - name: stg_ngpvan_classic__contacts_addresses
+    columns:
+      - name: surrogate_contacts_address_id
+        description: Surrogate key compiled using the surrogate prefix and contactsaddressid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_van_id
+        tests:
+          - relationships:
+              field: surrogate_van_id
+              to: ref('stg_ngpvan_classic__contacts')
+              config:
+                error_if: ">1000"
+                warn_if: ">100"
+
+  - name: stg_ngpvan_classic__contacts_activist_codes
+    columns:
+      - name: surrogate_contacts_activist_code_id
+        description: Surrogate key compiled using the surrogate prefix, NGPVAN database mode, and contactsactivistcodeid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_activist_code_id
+        tests:
+          - relationships:
+              field: surrogate_activist_code_id
+              to: ref('stg_ngpvan_classic__activist_codes')
+
+      - name: surrogate_input_type_id
+        tests:
+          - relationships:
+              field: surrogate_input_type_id
+              to: ref('stg_ngpvan_classic__input_types')
+
+      - name: surrogate_contact_type_id
+        tests:
+          - relationships:
+              field: surrogate_contact_type_id
+              to: ref('stg_ngpvan_classic__contact_types')
+
+  - name: stg_ngpvan_classic__contacts_contacts
+    columns:
+      - name: surrogate_contacts_contact_id
+        description: Surrogate key compiled using the surrogate prefix, NGPVAN database mode, and contactscontactid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_contact_type_id
+        tests:
+          - relationships:
+              field: surrogate_contact_type_id
+              to: ref('stg_ngpvan_classic__contact_types')
+
+      - name: surrogate_input_type_id
+        tests:
+          - relationships:
+              field: surrogate_input_type_id
+              to: ref('stg_ngpvan_classic__input_types')
+              config:
+                error_if: ">1000"
+                warn_if: ">100"
+
+      - name: surrogate_result_id
+        tests:
+          - relationships:
+              field: surrogate_result_id
+              to: ref('stg_ngpvan_classic__results')
+
+  - name: stg_ngpvan_classic__contacts_codes
+    columns:
+      - name: surrogate_contacts_code_id
+        description: Surrogate key compiled using the surrogate prefix, NGPVAN database mode, and contactcodeid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__contacts_contributions
+    columns:
+      - name: surrogate_contacts_contribution_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_user_id
+        tests:
+          - relationships:
+              field: surrogate_user_id
+              to: ref('stg_ngpvan_classic__users')
+              where: "created_by_user_id != 513"
+
+      - name: surrogate_payment_type_id
+        tests:
+          - relationships:
+              field: surrogate_payment_type_id
+              to: ref('stg_ngpvan_classic__payment_types')
+
+      - name: surrogate_contribution_status_id
+        tests:
+          - relationships:
+              field: surrogate_contribution_status_id
+              to: ref('stg_ngpvan_classic__contribution_statuses')
+
+      - name: surrogate_financial_program_id
+        tests:
+          - relationships:
+              field: surrogate_financial_program_id
+              to: ref('stg_ngpvan_classic__financial_programs')
+
+  - name: stg_ngpvan_classic__contacts_contributions_compliance_advanced
+    columns:
+      - name: surrogate_contacts_contribution_compliance_advance_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__contacts_contributions_compliance_basic
+    columns:
+      - name: surrogate_contacts_contribution_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__contacts_deduped
+    columns:
+      - name: surrogate_contacts_deduped_id
+        description: Surrogate key compiled using the surrogate prefix and contactsemailid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__contacts_emails
+    columns:
+      - name: surrogate_contacts_email_id
+        description: Surrogate key compiled using the surrogate prefix and contactsemailid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_van_id
+        tests:
+          - relationships:
+              field: surrogate_van_id
+              to: ref('stg_ngpvan_classic__contacts')
+              config:
+                error_if: ">1000"
+                warn_if: ">100"
+
+      - name: surrogate_email_type_id
+        tests:
+          - relationships:
+              field: surrogate_email_type_id
+              to: ref('stg_ngpvan_classic__email_types')
+
+  - name: stg_ngpvan_classic__contacts_phones
+    columns:
+      - name: surrogate_contacts_phone_id
+        description: Surrogate key compiled using the surrogate prefix and contactsphoneid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_van_id
+        tests:
+          - relationships:
+              field: surrogate_van_id
+              to: ref('stg_ngpvan_classic__contacts')
+
+      - name: surrogate_phone_type_id
+        tests:
+          - relationships:
+              field: surrogate_phone_type_id
+              to: ref('stg_ngpvan_classic__phone_types')
+
+  - name: stg_ngpvan_classic__contacts_survey_responses
+    columns:
+      - name: surrogate_contacts_survey_response_id
+        description: Surrogate key compiled using the surrogate prefix, NGPVAN database mode, and contactsurveyresponseid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_survey_response_id
+        tests:
+          - relationships:
+              field: surrogate_survey_response_id
+              to: ref('stg_ngpvan_classic__survey_responses')
+
+      - name: surrogate_survey_question_id
+        tests:
+          - relationships:
+              field: surrogate_survey_question_id
+              to: ref('stg_ngpvan_classic__survey_questions')
+
+  - name: stg_ngpvan_classic__event_signups
+    columns:
+      - name: surrogate_event_signup_id
+        description: Surrogate key compiled using the surrogate prefix and eventsignupid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__event_signups_statuses
+    columns:
+      - name: surrogate_event_signups_event_status_id
+        description: Surrogate key compiled using the surrogate prefix and eventsignupseventstatusid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__events
+    columns:
+      - name: surrogate_event_id
+        description: Surrogate key compiled using the surrogate prefix and eventid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__financial_programs
+    columns:
+      - name: surrogate_financial_program_id
+        description: Surrogate key compiled using the surrogate prefix and financialprogramid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__input_types
+    columns:
+      - name: surrogate_input_type_id
+        description: Surrogate key compiled using the surrogate prefix and inputtypeid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__is_cell_statuses
+    columns:
+      - name: surrogate_cell_status_id
+        description: Surrogate key compiled using the surrogate prefix and iscellstatusid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__master_survey_questions
+    columns:
+      - name: surrogate_master_survey_question_id
+        description: Surrogate key compiled using the surrogate prefix and mastersurveyquestionid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__master_survey_responses
+    columns:
+      - name: surrogate_master_survey_response_id
+        description: Surrogate key compiled using the surrogate prefix and mastersurveyresponseid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__payment_types
+    columns:
+      - name: surrogate_payment_type_id
+        description: Surrogate key compiled using the surrogate prefix and paymenttypeid.
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__phone_types
+    columns:
+      - name: surrogate_phone_type_id
+        description: Surrogate key compiled using the surrogate prefix and phonetypeid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__results
+    columns:
+      - name: surrogate_result_id
+        description: Surrogate key compiled using the surrogate prefix and resultid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: stg_ngpvan_classic__survey_questions
+    columns:
+      - name: surrogate_survey_question_id
+        description: Surrogate key compiled using the surrogate prefix and surveyquestionid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_master_survey_question_id
+        tests:
+          - relationships:
+              field: surrogate_master_survey_question_id
+              to: ref('stg_ngpvan_classic__master_survey_questions')
+              config:
+                error_if: ">1000"
+                warn_if: ">100"
+
+  - name: stg_ngpvan_classic__survey_responses
+    columns:
+      - name: surrogate_survey_response_id
+        description: Surrogate key compiled using the surrogate prefix and surveyresponseid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: surrogate_master_survey_response_id
+        tests:
+          - relationships:
+              field: surrogate_master_survey_response_id
+              to: ref('stg_ngpvan_classic__master_survey_responses')
+              config:
+                error_if: ">1000"
+                warn_if: ">100"
+
+  - name: stg_ngpvan_classic__users
+    columns:
+      - name: surrogate_user_id
+        description: Surrogate key compiled using the surrogate prefix and userid
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
