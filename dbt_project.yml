@@ -22,6 +22,7 @@ clean-targets:
 models:
   dbt_ngpvan:
     staging:
+      +materialized: table
       ngpvan_classic:
         base:
           +materialized: view
