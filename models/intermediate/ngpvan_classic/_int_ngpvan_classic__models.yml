@@ -1,0 +1,203 @@
+version: 2
+
+models:
+  - name: int_ngpvan_classic__01__contacts_activist_codes_denormalized
+    columns:
+      - name: surrogate_contacts_activist_code_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__contacts_deduped_enhanced
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "committee_id = duplicate_committee_id"
+    columns:
+      - name: surrogate_contacts_deduped_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+      - name: surrogate_duplicate_van_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+        
+  - name: int_ngpvan_classic__01__contacts_emails_denormalized_and_enhanced
+    columns:
+      - name: surrogate_contacts_email_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__contacts_phones_denormalized_and_enhanced
+    columns:
+      - name: surrogate_contacts_phone_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+  
+  - name: int_ngpvan_classic__01__contributions_denormalized
+    columns:
+      - name: surrogate_contacts_contribution_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__event_signups_denormalized_and_enhanced
+    columns:
+      - name: surrogate_event_signup_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__event_signups_statuses_enhanced
+    columns:
+      - name: surrogate_event_signups_event_status_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+      - name: surrogate_event_signup_id
+        tests:
+          - unique:
+              config:
+                severity: error
+              where: "most_recent_status = 1"
+
+  - name: int_ngpvan_classic__01__events_enhanced
+    columns:
+      - name: surrogate_event_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__interactions_denormalized_and_enhanced
+    columns:
+      - name: surrogate_contacts_contact_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__survey_questions_denormalized
+    columns:
+      - name: surrogate_survey_question_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__01__survey_responses_denormalized
+    columns:
+      - name: surrogate_survey_response_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__02__contacts_with_contact_means_by_mode
+    columns:
+      - name: surrogate_van_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__02__contacts_survey_responses_denormalized
+    columns:
+      - name: surrogate_contacts_survey_response_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__02__contacts_with_contribution_activity
+    columns:
+      - name: surrogate_van_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  - name: int_ngpvan_classic__02__event_signups_with_current_statuses
+    columns:
+      - name: surrogate_event_signup_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+          - relationships:
+              field: surrogate_event_signup_id
+              to: ref('int_ngpvan_classic__01__event_signups_statuses_enhanced')
+      - name: surrogate_event_id
+        tests:
+        - relationships:
+            field: surrogate_event_id
+            to: ref('int_ngpvan_classic__03__events_with_signup_statistics')
+
+  - name: int_ngpvan_classic__03__events_with_signup_statistics
+    columns:
+      - name: surrogate_event_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error

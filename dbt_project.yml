@@ -26,3 +26,6 @@ models:
       ngpvan_classic:
         base:
           +materialized: view
+    intermediate:
+      ngpvan_classic:
+        +materialized: table
