@@ -29,6 +29,7 @@ SELECT
     surrogate_input_type_id,
     contacts_contacts.input_type_id,
     input_types.input_type,
+    contacts_contacts.contacts_phone_id,
     contacts_contacts.committee_id,
     contacts_contacts.utc_created_at,
     contacts_contacts.utc_canvassed_at,
