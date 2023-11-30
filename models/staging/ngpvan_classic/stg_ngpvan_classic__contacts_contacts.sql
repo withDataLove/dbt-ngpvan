@@ -35,7 +35,8 @@ WITH
             ngpvan_instance||'|'||ngpvan_database_mode||'|'||contactscontactid AS surrogate_contacts_contact_id,
             ngpvan_instance||'|'||contacttypeid AS surrogate_contact_type_id,
             ngpvan_instance||'|'||inputtypeid AS surrogate_input_type_id,
-            ngpvan_instance||'|'||resultid AS surrogate_result_id
+            ngpvan_instance||'|'||resultid AS surrogate_result_id,
+            ngpvan_instance||'|'||contactsphoneid AS surrogate_contacts_phone_id
 
         FROM source
 
