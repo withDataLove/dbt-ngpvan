@@ -15,7 +15,7 @@ WITH
             parentcodeid AS parent_code_id,
             createdby AS created_by,
             CONVERT_TIMEZONE('America/New_York', 'UTC', datecreated) AS utc_created_at,
-            staticfullname AS static_full_name,
+            staticfullname AS source_code_path,
             codetypeid AS code_type_id,
             codedescription AS code_description,
             contacttypeid AS contact_type_id,
