@@ -1,7 +1,7 @@
 WITH
     source AS (
 
-        SELECT * FROM {{ ref('base_ngpvan_classic__contacts_contribution_codes') }}
+        SELECT * FROM {{ ref('base_ngpvan_classic__contacts_contributions_codes') }}
 
     ),
 

@@ -2,7 +2,7 @@ WITH base AS (
     {{
         union_all(
             source_schemas_variable='ngpvan_classic__schemas',
-            default_source_table='contactscontributioncodes',
+            default_source_table='contactscontributionscodes',
             required_packages=['ngp']
         )
     }}
