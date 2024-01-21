@@ -24,7 +24,7 @@ WITH
 
             -- additional columns
             ngpvan_instance||'|'||contactscontributionid AS surrogate_contacts_contribution_id,
-            ngpvan_instance||'|'||financialprogramid||'|'||contactscontributionid AS surrogate_contacts_contribution_compliance_advance_id
+            ngpvan_instance||'|'||financialprogramid||'|'||contactscontributionid AS surrogate_contacts_contribution_compliance_id
 
         FROM source
 
