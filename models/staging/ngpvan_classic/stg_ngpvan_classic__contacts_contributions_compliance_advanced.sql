@@ -10,7 +10,7 @@ WITH
         SELECT
             contactscontributionid AS contacts_contribution_id,
             financialprogramid AS financial_program_id,
-            contributiontypeid AS contribution_type_id,
+            contributiontypeid AS contribution_type,
             CAST(CAST(ismemo AS INT) AS BOOLEAN) AS is_memo,
             note,
             itemizationflag AS itemization_flag,
