@@ -61,7 +61,8 @@ WITH
             ngpvan_instance||'|'||createdby AS surrogate_user_id,
             ngpvan_instance||'|'||paymenttypeid AS surrogate_payment_type_id,
             ngpvan_instance||'|'||contributionstatusid AS surrogate_contribution_status_id,
-            ngpvan_instance||'|'||financialprogramid AS surrogate_financial_program_id
+            ngpvan_instance||'|'||financialprogramid AS surrogate_financial_program_id,
+            ngpvan_instance||'|'||codeid AS surrogate_code_id
 
         FROM source
 
