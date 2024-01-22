@@ -18,7 +18,8 @@ WITH
             ngpvan_instance,
 
             -- additional columns
-            ngpvan_instance||'|'||contactscontributionid AS surrogate_contacts_contribution_id
+            ngpvan_instance||'|'||contactscontributionid AS surrogate_contacts_contribution_id,
+            ngpvan_instance||'|'||codeid AS surrogate_code_id
 
         FROM source
 
