@@ -183,7 +183,7 @@ models:
 
   - name: stg_ngpvan_classic__contacts_contributions_compliance_advanced
     columns:
-      - name: surrogate_contacts_contribution_compliance_advance_id
+      - name: surrogate_contacts_contribution_compliance_id
         tests:
           - unique:
               config:
