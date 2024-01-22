@@ -31,7 +31,7 @@ SELECT surrogate_contacts_contribution_id,
        codes.source_code_description,
        codes.source_code_path,
        compliance.contribution_type,
-       compliance.is_memo
+       compliance.is_memoed
 
   FROM contributions
   LEFT JOIN codes USING (surrogate_contacts_contribution_id)

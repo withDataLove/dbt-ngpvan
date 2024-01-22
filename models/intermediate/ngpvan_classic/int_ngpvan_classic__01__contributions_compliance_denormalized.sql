@@ -12,6 +12,6 @@ select
     basic.contacts_contribution_id,
     basic.financial_program_id,
     advance.contribution_type,
-    advance.is_memo
+    advance.is_memoed
 from basic
 left join advance USING(surrogate_contacts_contribution_id, surrogate_contacts_contribution_compliance_id)

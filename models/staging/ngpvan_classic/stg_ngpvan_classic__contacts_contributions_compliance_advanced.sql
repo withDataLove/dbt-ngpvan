@@ -11,7 +11,7 @@ WITH
             contactscontributionid AS contacts_contribution_id,
             financialprogramid AS financial_program_id,
             contributiontypeid AS contribution_type,
-            CAST(CAST(ismemo AS INT) AS BOOLEAN) AS is_memo,
+            CAST(CAST(ismemo AS INT) AS BOOLEAN) AS is_memoed,
             note,
             itemizationflag AS itemization_flag,
             CAST(CAST(aggregatetowardslimit AS INT) AS BOOLEAN) AS is_aggregate_towards_limit,
