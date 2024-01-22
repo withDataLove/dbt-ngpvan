@@ -3,7 +3,7 @@ WITH contributions AS (
     FROM {{ ref('int_ngpvan_classic__01__contributions_denormalized') }}
 ),
 
-source_codes AS (
+codes AS (
     SELECT *
     FROM {{ ref('int_ngpvan_classic__01__contribution_source_codes') }}
     WHERE is_current
