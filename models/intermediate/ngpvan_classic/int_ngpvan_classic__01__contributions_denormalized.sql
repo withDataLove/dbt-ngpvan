@@ -30,7 +30,6 @@ SELECT
     contributions.financial_program_id,
     programs.financial_program,
     contributions.direct_marketing_code,
-    codes.source_code_path,
     contributions.utc_contribution_record_modified_at,
     contributions.online_reference_number
 
