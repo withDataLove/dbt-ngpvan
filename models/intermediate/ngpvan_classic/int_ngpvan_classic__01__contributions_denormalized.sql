@@ -38,3 +38,4 @@ LEFT JOIN users USING (surrogate_user_id)
 LEFT JOIN payment_types USING (surrogate_payment_type_id)
 LEFT JOIN statuses USING (surrogate_contribution_status_id)
 LEFT JOIN programs USING (surrogate_financial_program_id)
+WHERE is_canceled = FALSE

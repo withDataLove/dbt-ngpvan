@@ -56,6 +56,7 @@ WITH
             ngpvan_instance,
 
             -- additional columns
+            CASE WHEN datecanceled IS NOT NULL THEN TRUE ELSE FALSE END AS is_canceled,
             ngpvan_instance||'|'||contactscontributionid AS surrogate_contacts_contribution_id,
             ngpvan_instance||'|'||vanid AS surrogate_van_id,
             ngpvan_instance||'|'||createdby AS surrogate_user_id,
