@@ -172,6 +172,17 @@ models:
               config:
                 severity: error
 
+  - name: int_ngpvan_classic__02__contributions_with_compliance_data
+    columns:
+      - name: surrogate_contacts_contribution_id
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
   - name: int_ngpvan_classic__02__event_signups_with_current_statuses
     columns:
       - name: surrogate_event_signup_id
