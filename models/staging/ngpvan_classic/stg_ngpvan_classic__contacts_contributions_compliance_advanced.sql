@@ -10,8 +10,8 @@ WITH
         SELECT
             contactscontributionid AS contacts_contribution_id,
             financialprogramid AS financial_program_id,
-            contributiontypeid AS contribution_type_id,
-            CAST(CAST(ismemo AS INT) AS BOOLEAN) AS is_memo,
+            contributiontypeid AS contribution_type,
+            CAST(CAST(ismemo AS INT) AS BOOLEAN) AS is_memoed,
             note,
             itemizationflag AS itemization_flag,
             CAST(CAST(aggregatetowardslimit AS INT) AS BOOLEAN) AS is_aggregate_towards_limit,
@@ -24,7 +24,7 @@ WITH
 
             -- additional columns
             ngpvan_instance||'|'||contactscontributionid AS surrogate_contacts_contribution_id,
-            ngpvan_instance||'|'||financialprogramid||'|'||contactscontributionid AS surrogate_contacts_contribution_compliance_advance_id
+            ngpvan_instance||'|'||financialprogramid||'|'||contactscontributionid AS surrogate_contacts_contribution_compliance_id
 
         FROM source
 
