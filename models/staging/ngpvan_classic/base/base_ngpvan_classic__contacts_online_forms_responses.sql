@@ -2,7 +2,8 @@ WITH base AS (
     {{
         union_all(
             source_schemas_variable='ngpvan_classic__schemas',
-            default_source_table='contactsonlineformsresponses_boolean',
+            source_tables_variable='contactsonlineformsresponses',
+            column_override={"responsevalue":"varchar(255)"},
             required_packages=['ngp']
         )
     }}
