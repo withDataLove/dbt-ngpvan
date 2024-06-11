@@ -3,7 +3,7 @@ WITH base AS (
         union_all(
             source_schemas_variable='ngpvan_classic__schemas',
             source_tables_variable='contactsonlineformsresponses',
-            column_override='{"responsevalue":"varchar(255)"}',
+            column_override={"responsevalue":"varchar(255)"},
             required_packages=['ngp']
         )
     }}
