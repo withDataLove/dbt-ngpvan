@@ -27,7 +27,7 @@ renamed as (
         submittedhomephone as submitted_home_phone,
         submittedhomephonecountrycode as submitted_home_phone_country_code,
         submittedhomephoneinternationaldialingprefix as submitted_home_phone_international_dialing_prefix,
-        submittedworkphone as submittedworkphone,_
+        submittedworkphone as submitted_work_phone,
         submittedworkphonecountrycode as submitted_work_phone_country_code,
         submittedworkphoneinternationaldialingprefix as submitted_work_phone_international_dialing_prefix,
         submittedmobilephone as submitted_mobile_phone,
