@@ -2,7 +2,8 @@ WITH base AS (
     {{
         union_all(
             source_schemas_variable='ngpvan_classic__schemas',
-            default_source_table='contactsonlineforms'
+            default_source_table='contactsonlineforms',
+            required_packages=['ngp']
         )
     }}
 )
