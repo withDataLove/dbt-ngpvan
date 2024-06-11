@@ -1,5 +1,5 @@
 WITH source AS (
-    SELECT * FROM {{ ref('base_ngpvan_classic__online_forms_responses') }}
+    SELECT * FROM {{ ref('base_ngpvan_classic__online_form_responses') }}
 ),
 renamed AS (
     SELECT
