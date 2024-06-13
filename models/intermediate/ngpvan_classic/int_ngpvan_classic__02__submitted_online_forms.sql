@@ -5,7 +5,7 @@ with contact_forms as (
 
 forms as (
     select *
-    from {{ ref('int_ngpvan_classic__01__online_forms_enhanced') }}
+    from {{ ref('int_ngpvan_classic__01__online_forms_denormalized') }}
 )
 
 select
