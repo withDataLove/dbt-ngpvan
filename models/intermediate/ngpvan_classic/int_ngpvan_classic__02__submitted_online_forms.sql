@@ -1,17 +1,17 @@
 with contact_forms as (
     select *
-    from dbt_transformations.stg_ngpvan_classic__contacts_online_forms
+    from {{ ref('stg_ngpvan_classic__contacts_online_forms') }}
 ),
 
 forms as (
     select *
-    from dbt_transformations.stg_ngpvan_classic__online_forms
+    from {{ ref('int_ngpvan_classic__01__online_forms_enhanced') }}
 )
 
 select
     contact_forms.contacts_online_form_id,
     contact_forms.vanid,
-    online_form_id,
+    contact_forms.online_form_id,
     contact_forms.is_new_contact,
     contact_forms.submitted_title,
     contact_forms.submitted_first_name,
@@ -29,8 +29,11 @@ select
     contact_forms.utc_contacts_online_form_modified_at,
     contact_forms.surrogate_contacts_online_form_id,
     contact_forms.surrogate_van_id,
-    contact_forms.surrogate_online_form_id,
-    forms.*
+    surrogate_online_form_id,
+    forms.online_form_type_name,
+    forms.online_form_name,
+    forms.online_form_url,
+    committee_id,
+    is_active
 from contact_forms
-left join forms using(online_form_id)
-where online_form_id = 504
+left join forms using(surrogate_online_form_id)
