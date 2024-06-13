@@ -24,7 +24,10 @@ renamed AS (
 
         -- additional columns
         ngpvan_instance||'|'||onlineformquestionid AS surrogate_online_form_question_id,
-        ngpvan_instance||'|'||onlineformid AS surrogate_online_form_id
+        ngpvan_instance||'|'||onlineformid AS surrogate_online_form_id,
+        ngpvan_instance||'|'||onlineformquestiontypeid AS surrogate_online_form_question_type_id,
+        ngpvan_instance||'|'||activistcodeid AS surrogate_activist_code_id,
+        ngpvan_instance||'|'||surveyquestionid AS surrogate_survey_question_id
 
     FROM source
 )
