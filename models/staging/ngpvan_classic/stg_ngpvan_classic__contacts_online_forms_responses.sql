@@ -3,7 +3,7 @@ WITH source AS (
 ),
 renamed AS (
     SELECT
-        contactsonlineformid||'|'||onlineformquestionid||'|'||NVL(onlineformresponseid::TEXT, MD5(responsevalue)) as contacts_online_forms_response_id,
+        contactsonlineformid||'|'||onlineformquestionid||'|'||NVL(onlineformresponseid::TEXT, MD5(responsevalue), 'unknown') as contacts_online_forms_response_id,
         contactsonlineformid AS contacts_online_form_id,
         onlineformquestionid AS online_form_question_id,
         onlineformresponseid AS online_form_response_id,
@@ -14,7 +14,7 @@ renamed AS (
         CONVERT_TIMEZONE('America/New_York', 'UTC', datemodified) AS utc_online_form_response_modified_at,
 
         -- additional columns
-        ngpvan_instance||'|'||contactsonlineformid||'|'||onlineformquestionid||'|'||NVL(onlineformresponseid::TEXT, MD5(responsevalue)) as surrogate_contacts_online_forms_response_id,
+        ngpvan_instance||'|'||contactsonlineformid||'|'||onlineformquestionid||'|'||NVL(onlineformresponseid::TEXT, MD5(responsevalue), 'unknown') as surrogate_contacts_online_forms_response_id,
         ngpvan_instance||'|'||contactsonlineformid AS surrogate_contacts_online_form_id,
         ngpvan_instance||'|'||onlineformquestionid AS surrogate_online_form_question_id,
         ngpvan_instance||'|'||onlineformresponseid AS surrogate_online_form_response_id
