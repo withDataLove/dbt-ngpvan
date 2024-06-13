@@ -4,7 +4,6 @@ WITH source AS (
 renamed AS (
     SELECT
         contactsonlineformid||'|'||onlineformquestionid||'|'||NVL(onlineformresponseid::TEXT, MD5(responsevalue)) as contacts_online_forms_response_id,
-        contactsonlineformid||'|'||onlineformquestionid||'|'||
         contactsonlineformid AS contacts_online_form_id,
         onlineformquestionid AS online_form_question_id,
         onlineformresponseid AS online_form_response_id,
