@@ -1,3 +1,9 @@
+{{
+    config(
+        tags=["ngpvan-online-forms"]
+    )
+}}
+
 with forms as (
     select *
     from {{ ref('stg_ngpvan_classic__online_forms') }}

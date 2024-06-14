@@ -1,3 +1,9 @@
+{{
+    config(
+        tags=["ngpvan-online-forms"]
+    )
+}}
+
 with submitted_responses as (
     select * from dbt_mbrewsterffa_dev.stg_ngpvan_classic__contacts_online_forms_responses
 ),
