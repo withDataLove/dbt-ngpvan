@@ -1,3 +1,9 @@
+{{
+    config(
+        tags=["ngpvan-online-forms"]
+    )
+}}
+
 with submitted as (
     select * from {{ ref('stg_ngpvan_classic__contacts_online_forms_responses') }}
 ),
