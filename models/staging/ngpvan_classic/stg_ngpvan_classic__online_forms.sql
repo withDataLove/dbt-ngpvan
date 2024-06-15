@@ -30,7 +30,7 @@ renamed AS (
         isrecurringemailenabled AS is_recurring_email_enabled,
         campaignid AS campaign_id,
         eventid AS event_id,
-        userfacingonlineformurl AS user_facing_online_form_url,
+        userfacingonlineformurl AS public_form_url,
         CONVERT_TIMEZONE('America/New_York', 'UTC', datemodified) AS utc_modified_at,
 
         -- additional columns

@@ -19,6 +19,7 @@ select
     types.online_form_type_name,
     forms.online_form_name,
     forms.online_form_url,
+    forms.public_form_url,
     forms.committee_id,
     forms.campaign_id,
     forms.event_id,
