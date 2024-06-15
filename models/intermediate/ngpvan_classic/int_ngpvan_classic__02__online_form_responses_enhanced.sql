@@ -30,7 +30,7 @@ select
     utc_online_form_response_modified_at,
     utc_online_form_response_suppressed_at,
     surrogate_online_form_response_id,
-    surrogate_online_form_question_id,
+    responses.surrogate_online_form_question_id,
     responses.surrogate_survey_question_id,
     surrogate_survey_response_id,
     questions.online_form_id,
