@@ -6,7 +6,7 @@
 
 with responses as (
     select *
-    from {{ref('stg_ngpvan_classic__online_form_responses') }}
+    from {{ ref('stg_ngpvan_classic__online_form_responses') }}
 ),
 
 questions as (
@@ -21,7 +21,8 @@ select
     online_form_response_display_name,
     is_other_response,
     responses.activist_code_id,
-    responses.is_archived,
+    responses.is_response_archived,
+    questions.is_question_archived,
     is_note,
     responses.survey_question_id,
     survey_response_id,
@@ -40,4 +41,6 @@ select
     questions.surrogate_online_form_id
 
 from responses
-left join questions using (surrogate_online_form_question_id)
+left join
+    questions
+    on responses.surrogate_online_form_question_id = questions.surrogate_online_form_question_id

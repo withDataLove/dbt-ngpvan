@@ -22,7 +22,7 @@ select
     questions.activist_code_id,
     questions.survey_question_id,
     questions.order_by,
-    questions.is_archived,
+    questions.is_question_archived,
     questions.utc_online_form_question_created_at,
     questions.utc_online_form_question_modified_at,
     questions.utc_online_form_question_suppressed_at,
@@ -33,4 +33,6 @@ select
     questions.surrogate_survey_question_id
 
 from questions
-join types using (surrogate_online_form_question_type_id)
+inner join
+    types
+    on questions.surrogate_online_form_question_type_id = types.surrogate_online_form_question_type_id

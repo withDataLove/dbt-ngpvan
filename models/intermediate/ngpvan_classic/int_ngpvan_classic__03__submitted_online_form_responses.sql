@@ -14,6 +14,7 @@ questions as (
 
 responses as (
     select * from {{ ref('int_ngpvan_classic__02__online_form_responses_enhanced') }}
+    where not is_question_archived
 )
 
 select
