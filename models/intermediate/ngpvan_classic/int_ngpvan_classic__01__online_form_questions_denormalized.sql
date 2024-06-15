@@ -27,7 +27,7 @@ select
     questions.utc_online_form_question_modified_at,
     questions.utc_online_form_question_suppressed_at,
     questions.surrogate_online_form_question_id,
-    surrogate_online_form_question_type_id,
+    questions.surrogate_online_form_question_type_id,
     questions.surrogate_online_form_id,
     questions.surrogate_activist_code_id,
     questions.surrogate_survey_question_id
