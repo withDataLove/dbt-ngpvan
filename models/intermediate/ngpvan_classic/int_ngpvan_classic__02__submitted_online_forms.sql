@@ -18,7 +18,7 @@ select
     contact_forms.contacts_online_form_id,
     contact_forms.vanid,
     contact_forms.online_form_id,
-    contact_forms.public_form_url,
+    forms.public_form_url,
     contact_forms.is_new_contact,
     contact_forms.submitted_title,
     contact_forms.submitted_first_name,
