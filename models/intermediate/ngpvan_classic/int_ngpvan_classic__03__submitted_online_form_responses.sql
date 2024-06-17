@@ -20,7 +20,7 @@ responses as (
 select
     submitted.contacts_online_forms_response_id,
     submitted.contacts_online_form_id,
-    responses.online_form_id,
+    COALESCE(responses.online_form_id, questions.online_form_id) AS online_form_id,
     submitted.online_form_question_id,
     questions.online_form_question_name,
     questions.online_form_question_display_name,
