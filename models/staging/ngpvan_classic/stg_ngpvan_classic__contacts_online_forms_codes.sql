@@ -1,3 +1,9 @@
+{{
+    config(
+        tags=["ngpvan-online-forms"]
+    )
+}}
+
 WITH source AS (
     SELECT * FROM {{ ref('base_ngpvan_classic__contacts_online_forms_codes') }}
 ),
